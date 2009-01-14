@@ -1,1 +1,2 @@
-# Include hook code here
+require 'fancy_box'
+ActionView::Base.send :include, FancyBox
