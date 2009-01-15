@@ -27,9 +27,9 @@ namespace :fancy_box do
     desc 'Installs the images'
     task :images do
       public_path = File.join(IMGS,"fancy_box")
-      Dir.rmdir public_path if File.exists?(public_path)
+      FileUtils.rm_r public_path if File.exists?(public_path)
       Dir.mkdir public_path
-      imgs = Dir.glob(File.join(FANCY_BOX_PATH,"images","*.png"))
+      imgs = Dir.glob(File.join(FANCY_BOX_PATH,"images","*.{png,gif}"))
       FileUtils.cp_r imgs, public_path
       puts "Images installed."
     end

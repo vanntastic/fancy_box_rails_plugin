@@ -50,6 +50,10 @@ div#fancy_content {
 	z-index: 96;
 }
 
+div#fancy_content p{
+  padding: 20px;
+}
+
 #fancy_frame {
 	position: relative;
 	width: 100%;

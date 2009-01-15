@@ -1,3 +1,5 @@
 $(document).ready(function() {
-  $('a.fancy').fancybox();
+  $("a.fancy-img").fancybox();
+  $(".gallery a").fancybox();
+  $("a.fancy").fancybox();
 });
