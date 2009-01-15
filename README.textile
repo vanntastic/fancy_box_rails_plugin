@@ -1,6 +1,6 @@
 h1. FancyBox
 
-FancyBox is a rails plugin wrapper for a jquery plugin withe same name. It's essentialy installs and gives you helper methods for using in your views. You can find the original documentation at : http://fancy.klade.lv/. Once you install you can also call it from jquery as well.
+FancyBox is a rails plugin wrapper for a jquery plugin wit the same name. It's essentialy installs and gives you helper methods for using in your views. You can find the original documentation at : http://fancy.klade.lv/. Once you install you can also call it from jquery as well.
 
 h1. Installation
 
