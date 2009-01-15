@@ -21,13 +21,13 @@ To use it for inline content or remote content do:
 To use it for images do:
 
     link_to_image "special.jpg"
-    # or to add in a caption
+    or to add in a caption
     link_to_image "special.jpg", :title => "special image"
 
 To create an image gallery with fancy boxes do:
 
     fancy_gallery "one.jpg", "two.jpg"
-    # or to add captions
+    or to add captions
     fancy_gallery "one.jpg:first picture", "two.jpg:second picture"
 
 NOTE : if you use a base reset css stylesheet, it will not render the caption properly, hopefully I have some time to fix this, but for now I can do without it, feel free to fix this issue by forking this
