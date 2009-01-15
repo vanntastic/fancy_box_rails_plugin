@@ -1,0 +1,39 @@
+h1. FancyBox
+
+FancyBox is a rails plugin wrapper for a jquery plugin withe same name. It's essentialy installs and gives you helper methods for using in your views. You can find the original documentation at : http://fancy.klade.lv/. Once you install you can also call it from jquery as well.
+
+h1. Installation
+
+# run rake fancy_box:install:all
+# somewhere in the head of your page, put <%= include_fancy_box %>
+# That's it!
+
+h1. Usage
+
+To use it for inline content or remote content do:
+
+    link_to_box "Some div", "#some-div"
+    or
+    link_to_box "google", "http://google.com"
+    or
+    link_to_box "some page", "/some/page"
+
+To use it for images do:
+
+    link_to_image "special.jpg"
+    # or to add in a caption
+    link_to_image "special.jpg", :title => "special image"
+
+To create an image gallery with fancy boxes do:
+
+    fancy_gallery "one.jpg", "two.jpg"
+    # or to add captions
+    fancy_gallery "one.jpg:first picture", "two.jpg:second picture"
+
+NOTE : if you use a base reset css stylesheet, it will not render the caption properly, hopefully I have some time to fix this, but for now I can do without it, feel free to fix this issue by forking this
+
+h1. Credits
+
+* based off of the fancy_box jquery plugin by : http://fancy.klade.lv/
+
+Copyright (c) 2009 Vann Ek, released under the MIT license
