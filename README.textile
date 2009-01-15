@@ -18,6 +18,10 @@ To use it for inline content or remote content do:
     or
     link_to_box "some page", "/some/page"
 
+NOTE : you can also do:
+
+    link_to "Some div", "#some-div", :class => "fancy"
+
 To use it for images do:
 
     link_to_image "special.jpg"
@@ -29,6 +33,8 @@ To create an image gallery with fancy boxes do:
     fancy_gallery "one.jpg", "two.jpg"
     or to add captions
     fancy_gallery "one.jpg:first picture", "two.jpg:second picture"
+
+All the methods use standard link_to options, there are just there to save you some precious keystrokes.
 
 NOTE : if you use a base reset css stylesheet, it will not render the caption properly, hopefully I have some time to fix this, but for now I can do without it, feel free to fix this issue by forking this
 
