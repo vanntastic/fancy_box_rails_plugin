@@ -13,10 +13,12 @@ h1. Usage
 To use it for inline content or remote content do:
 
     link_to_box "Some div", "#some-div"
-    or
+    # or
     link_to_box "google", "http://google.com"
-    or
+    # or
     link_to_box "some page", "/some/page"
+    # or to override the default fancy_box class
+    link_to_box "some box", "#some-box", :box_class => "small" 
 
 NOTE : you can also do:
 
@@ -25,18 +27,37 @@ NOTE : you can also do:
 To use it for images do:
 
     link_to_image "special.jpg"
-    or to add in a caption
+    # or to add in a caption
     link_to_image "special.jpg", :title => "special image"
 
 To create an image gallery with fancy boxes do:
 
     fancy_gallery "one.jpg", "two.jpg"
-    or to add captions
+    # or to add captions
     fancy_gallery "one.jpg:first picture", "two.jpg:second picture"
 
 All the methods use standard link_to options, there are just there to save you some precious keystrokes.
 
-NOTE : if you use a base reset css stylesheet, it will not render the caption properly, hopefully I have some time to fix this, but for now I can do without it, feel free to fix this issue by forking this
+NOTE : if you use a base reset css stylesheet, it will not render the caption properly, this might be due to the fact that you have td styled with vertical-align: baseline, MAKE SURE that you find that somewhere in your stylesheet and remove it or comment it out.
+
+h1. fancy_box method
+
+The fancy_box helper method simply generates an inline div that allows you to add a title as well. 
+
+EXAMPLE : 
+
+     fancy_box :title => "My Special Box" do
+      <p>This is my special box with content</p>
+     end
+
+OPTIONS :
+
+  :title => "A title for your fancy_box"
+  :title_tag => The tag that will wrap the title, defaults to h3
+  :title_options => html options for your title_tag
+  :options => standard html options
+
+This plugin covers the 80% use case, that basically means that it will help you create fancy boxes using convention over configuration, if you need to configure fancy_box open up load_fancybox.js and add your own settings.
 
 h1. Credits
 

@@ -51,7 +51,13 @@ div#fancy_content {
 }
 
 div#fancy_content p{
-  padding: 20px;
+  padding: 10px 20px;
+}
+
+div#fancy_content h3{
+  margin: 15px 20px 10px 20px;
+  font: 1.25em "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  font-weight: bold;
 }
 
 #fancy_frame {
