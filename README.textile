@@ -13,11 +13,11 @@ h1. Usage
 To use it for inline content or remote content do:
 
     link_to_box "Some div", "#some-div"
-    # or
+    #OR
     link_to_box "google", "http://google.com"
-    # or
+    #OR
     link_to_box "some page", "/some/page"
-    # or to override the default fancy_box class
+    #OR to override the default fancy_box class
     link_to_box "some box", "#some-box", :box_class => "small" 
 
 NOTE : you can also do:
@@ -27,13 +27,13 @@ NOTE : you can also do:
 To use it for images do:
 
     link_to_image "special.jpg"
-    # or to add in a caption
+    #OR to add in a caption
     link_to_image "special.jpg", :title => "special image"
 
 To create an image gallery with fancy boxes do:
 
     fancy_gallery "one.jpg", "two.jpg"
-    # or to add captions
+    #OR to add captions
     fancy_gallery "one.jpg:first picture", "two.jpg:second picture"
 
 All the methods use standard link_to options, there are just there to save you some precious keystrokes.
