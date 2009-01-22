@@ -32,11 +32,24 @@ module FancyBox
   # EX : 
   #   link_to_image "special.jpg"
   #   link_to_image "special.jpg", :title => "My Special Title" # => gives the pic a title
-  #   please note: the title doesn't render properly if you are using a reset css file
+  #   link_to_image "special-thumb.jpg:special-big.jpg" 
+  #       => Allows you to set a different file for the thumbnail 
+  #   please note: the caption doesn't render properly if you are using a reset css file
   def link_to_image(src,options={})
     options[:class] ||= ""
     options[:class] << " fancy-img"
-    link_src = File.join "/", "images", src
+    link_src_ary = src.split(":")
+    # if you pass a absolute path with a '/', it will know to use that instead...
+    root_prefix = src.first == "/" ? "" : File.join("/","images")
+    if link_src_ary.length == 1
+      link_src = File.join(root_prefix, src)
+    elsif link_src_ary.length == 2
+      link_src = File.join(root_prefix,link_src_ary.last)
+      src = File.join(root_prefix,link_src_ary.first)
+    else
+      raise ArgumentError, "You have too many arguments for your img src, it should be: img_src:link_src"
+    end
+    
     link_to image_tag(src), link_src, options
   end
   

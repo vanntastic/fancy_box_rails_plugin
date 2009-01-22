@@ -29,6 +29,8 @@ To use it for images do:
     link_to_image "special.jpg"
     #OR to add in a caption
     link_to_image "special.jpg", :title => "special image"
+    #OR if you want a different thumbnail pic
+    link_to_image "special-thumb.jpg:special-big.jpg"
 
 To create an image gallery with fancy boxes do:
 
