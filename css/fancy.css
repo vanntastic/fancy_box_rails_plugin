@@ -50,8 +50,14 @@ div#fancy_content {
 	z-index: 96;
 }
 
-div#fancy_content p{
-  padding: 10px 20px;
+/* default padding for most block level elements */
+div#fancy_content p, div#fancy_content ul, div#fancy_content blockquote, div#fancy_content div, div#fancy_content span{
+  padding: 5px 10px;
+}
+
+div#fancy_content ul{
+  padding:5px 20px;
+  list-style: square outside;
 }
 
 div#fancy_content h3{

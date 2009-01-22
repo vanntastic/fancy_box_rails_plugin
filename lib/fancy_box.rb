@@ -15,12 +15,14 @@ module FancyBox
   #   link_to_box "About", "/about" # => opens the about page in a fancy_box
   #   link_to_box "About", "/about", 
   #               :title => "About Us" # => opens about page in a fancy_box with a a title
+  #   link_to_box "Super Special", '#super-special', :title => :auto
+  #       # => sets the title to the content
   #   link_to_box "Special Box", "#special", :box_class => "small"
   #       # => Opens #special with the class of 'small' assuming that you set it 
   #            up in load_fancybox.js
   def link_to_box(content, link, options={})
     box_class = options[:box_class].nil? ? "fancy" : options[:box_class]
-    
+    options[:title] = content if options[:title] == :auto
     options[:class] << " #{box_class}" unless options[:class].nil?
     options[:class] = "#{box_class}" if options[:class].nil?
     
