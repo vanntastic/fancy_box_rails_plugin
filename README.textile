@@ -33,10 +33,13 @@ To use it for images do:
     link_to_image "special-thumb.jpg:special-big.jpg"
 
 To create an image gallery with fancy boxes do:
-
-    fancy_gallery "one.jpg", "two.jpg"
-    #OR to add captions
-    fancy_gallery "one.jpg:first picture", "two.jpg:second picture"
+  fancy_gallery [array of hashes]
+  
+  fancy_gallery {:thumb => "first-thumb.jpg", :main => "first.jpg", :title => "first pic"}
+    Hash options:
+      :thumb => "The thumbnail for the pic",
+      :main => "The main picture to open in the fancy box",
+      :title => "The title for your picture"
 
 All the methods use standard link_to options, there are just there to save you some precious keystrokes.
 
@@ -49,7 +52,7 @@ The fancy_box helper method simply generates an inline div that allows you to ad
 EXAMPLE : 
 
      fancy_box :title => "My Special Box" do
-      <p>This is my special box with content</p>
+       #This is my special box with content
      end
 
 OPTIONS :

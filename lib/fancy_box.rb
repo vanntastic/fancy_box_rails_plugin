@@ -55,21 +55,25 @@ module FancyBox
     link_to image_tag(src), link_src, options
   end
   
-  # allows you to create a fancy box gallery, 
+  # allows you to create a fancy box gallery, passing an array of hashes
   # EX:
-  #   fancy_gallery "first.jpg:A optional title", "second.jpg:A optional title"
-  #   just pass in a list of strings and an optional title with a ":"
-  #   please note: the title doesn't render properly if you are using a reset css file
+  #   fancy_gallery {:thumb => "first-thumb.jpg", :main => "first.jpg", :title => "first pic"}
+  # Hash options:
+  #   :thumb => "The thumbnail for the pic",
+  #   :main => "The main picture to open in the fancy box",
+  #   :title => "The title for your picture"
+  #   NOTE: the title doesn't render properly if you are using a reset css file, 
+  #         most reset css files set vertical-align: baseline, you need to change that in order
+  #         for the caption to be rendered properly
   #   NOTE : if you want to change the look of the gallery, just modify the .gallery style
-  def fancy_gallery(*imgs)
+  def fancy_gallery(imgs=[])
     content = ""
     group_name = "group-#{random_id}"
     imgs.each do |img|
-      src = img.split(":").first
-      title = img.split(":").length == 1 ? "" : img.split(":").last
       # assemble the image src for the anchor tag
-      link_src = File.join "/", "images", src
-      content << link_to(image_tag(src, :alt => ""),link_src,:rel => group_name,:title => title)
+      link_src = File.join "/", "images", img[:main]
+      content << link_to(image_tag(img[:thumb], :alt => ""),link_src,:rel => group_name,
+                                                                     :title => img[:title])
     end
     content_tag(:div,content,:id => "gallery-#{random_id}",:class => "gallery")
   end
