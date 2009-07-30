@@ -19,4 +19,8 @@ $(document).ready(function() {
   $("a.fancy-img").fancybox();
   $(".gallery a").fancybox();
   $("a.fancy").fancybox();
+  $("a.iframe").fancybox({
+    'frameWidth': 800,
+    'frameHeight': 600
+  });
 });

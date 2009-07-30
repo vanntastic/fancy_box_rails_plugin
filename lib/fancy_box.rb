@@ -1,10 +1,10 @@
 module FancyBox
-  
+  include Constants
   # includes all the files necessary to use fancy_box
   # just put <%= include_fancy_box %> in the head of your page
   def include_fancy_box(*args)
     content = javascript_include_tag('jquery.fancy_box/jquery.fancybox-1.2.1.pack.js',
-                                     'jquery.fancy_box/fancy_box/jquery.easing.1.3.js',                                      
+                                     'jquery.fancy_box/jquery.easing.1.3.js',                                      
                                      'jquery.fancy_box/load_fancybox', 
                                      :cache => "fancy_box")
     content << "\n#{stylesheet_link_tag('jquery.fancybox.css')}"                                
@@ -27,6 +27,7 @@ module FancyBox
     options[:title] = content if options[:title] == :auto
     options[:class] << " #{box_class}" unless options[:class].nil?
     options[:class] = "#{box_class}" if options[:class].nil?
+    options[:class] << " iframe" if determine_request(link) == :remote 
     
     options.delete :box_class
     link_to content, link, options
@@ -104,6 +105,13 @@ module FancyBox
   protected
     def random_id(num_hash=9999)
       rand(num_hash)
+    end
+    
+    # determines the request 
+    def determine_request(req)
+      return :img if IMAGE_TYPES.include?(req.split(".").last)
+      return :remote if TLDS.match(req)
+      return :standard
     end
     
 end
