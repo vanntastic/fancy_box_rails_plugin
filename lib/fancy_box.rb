@@ -3,7 +3,8 @@ module FancyBox
   # includes all the files necessary to use fancy_box
   # just put <%= include_fancy_box %> in the head of your page
   def include_fancy_box(*args)
-    content = javascript_include_tag('jquery.fancybox-1.0.0.js','jquery.pngFix.pack.js',                                      
+    content = javascript_include_tag('jquery.fancybox-1.2.1.pack.js',
+                                     'jquery.easing.1.3.js',                                      
                                      'load_fancybox')
     content << "\n#{stylesheet_link_tag('fancy')}"                                
   end
