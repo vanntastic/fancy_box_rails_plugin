@@ -6,7 +6,7 @@ module FancyBox
     content = javascript_include_tag('jquery.fancybox-1.2.1.pack.js',
                                      'jquery.easing.1.3.js',                                      
                                      'load_fancybox')
-    content << "\n#{stylesheet_link_tag('fancy')}"                                
+    content << "\n#{stylesheet_link_tag('jquery.fancybox.css')}"                                
   end
   
   # the link method for fancy_box, has the same options as link_to and is fully equipped for ajax

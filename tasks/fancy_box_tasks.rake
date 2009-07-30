@@ -48,5 +48,4 @@ namespace :fancy_box do
     
   end
   
-  
 end
