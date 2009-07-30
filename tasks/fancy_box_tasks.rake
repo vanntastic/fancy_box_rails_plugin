@@ -28,7 +28,6 @@ namespace :fancy_box do
     task :images do
       public_path = File.join(IMGS,"fancy_box")
       unless File.exists?(public_path)
-        FileUtils.rm_r public_path 
         Dir.mkdir public_path
         imgs = Dir.glob(File.join(FANCY_BOX_PATH,"images","*.{png,gif}"))
         FileUtils.cp_r imgs, public_path
