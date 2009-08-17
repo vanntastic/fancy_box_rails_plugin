@@ -74,7 +74,7 @@ module FancyBox
     group_name = "group-#{random_id}"
     imgs.each do |img|
       # assemble the image src for the anchor tag
-      has_img_path = img[:main].split("/").first == "images"
+      has_img_path = img[:main].split("/").include?("images")
       link_src = has_img_path ? img[:main] : File.join("/", "images", img[:main])
       content << link_to(image_tag(img[:thumb], :alt => ""),link_src,:rel => group_name,
                                                                      :title => img[:title])
