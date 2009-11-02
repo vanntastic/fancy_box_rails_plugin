@@ -62,10 +62,10 @@ EXAMPLE :
 
 OPTIONS :
 
-  :title => "A title for your fancy_box"
-  :title_tag => The tag that will wrap the title, defaults to h3
-  :title_options => html options for your title_tag
-  :options => standard html options
+    :title => "A title for your fancy_box"
+    :title_tag => The tag that will wrap the title, defaults to h3
+    :title_options => html options for your title_tag
+    :options => standard html options
 
 This plugin covers the 80% use case, that basically means that it will help you create fancy boxes using convention over configuration, if you need to configure fancy_box open up load_fancybox.js and add your own settings.
 
