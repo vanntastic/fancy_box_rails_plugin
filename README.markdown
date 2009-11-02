@@ -69,7 +69,8 @@ OPTIONS :
 
 This plugin covers the 80% use case, that basically means that it will help you create fancy boxes using convention over configuration, if you need to configure fancy_box open up load_fancybox.js and add your own settings.
 
-h1. Credits
+Credits
+-------
 
 * based off of the fancy_box jquery plugin by : http://fancy.klade.lv/
 
