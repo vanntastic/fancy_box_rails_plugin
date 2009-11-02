@@ -1,14 +1,17 @@
-h1. FancyBox
+FancyBox
+--------
 
 FancyBox is a rails plugin wrapper for a jquery plugin wit the same name. It's essentialy installs and gives you helper methods for using in your views. You can find the original documentation at : http://fancy.klade.lv/. Once you install you can also call it from jquery as well.
 
-h1. Installation
+Installation
+------------
 
-# run rake fancy_box:install:all
-# somewhere in the head of your page, put <%= include_fancy_box %>
-# That's it!
+* run rake fancy_box:install:all
+* somewhere in the head of your page, put <%= include_fancy_box %>
+* That's it!
 
-h1. Usage
+Usage
+-----
 
 To use it for inline content or remote content do:
 
@@ -33,19 +36,21 @@ To use it for images do:
     link_to_image "special-thumb.jpg:special-big.jpg"
 
 To create an image gallery with fancy boxes do:
-  fancy_gallery [array of hashes]
+
+    fancy_gallery [array of hashes]
   
-  fancy_gallery {:thumb => "first-thumb.jpg", :main => "first.jpg", :title => "first pic"}
-    Hash options:
-      :thumb => "The thumbnail for the pic",
-      :main => "The main picture to open in the fancy box",
-      :title => "The title for your picture"
+    fancy_gallery {:thumb => "first-thumb.jpg", :main => "first.jpg", :title => "first pic"}
+      Hash options:
+        :thumb => "The thumbnail for the pic",
+        :main => "The main picture to open in the fancy box",
+        :title => "The title for your picture"
 
 All the methods use standard link_to options, there are just there to save you some precious keystrokes.
 
 NOTE : if you use a base reset css stylesheet, it will not render the caption properly, this might be due to the fact that you have td styled with vertical-align: baseline, MAKE SURE that you find that somewhere in your stylesheet and remove it or comment it out.
 
-h1. fancy_box method
+fancy_box method
+----------------
 
 The fancy_box helper method simply generates an inline div that allows you to add a title as well. 
 
