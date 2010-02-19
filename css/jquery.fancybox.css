@@ -83,8 +83,8 @@ div#fancy_content {
 }
 
 div#fancy_div {
-	background: #000;
-	color: #FFF;
+	background: #fff;
+	color: #000;
 	height: 100%;
 	width: 100%;
 	z-index: 100;
