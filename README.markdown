@@ -6,7 +6,9 @@ FancyBox is a rails plugin wrapper for a jquery plugin wit the same name. It's e
 Installation
 ------------
 
+* script/plugin install git://github.com/vanntastic/fancy_box_rails_plugin.git
 * run rake fancy_box:install:all
+* make sure you have jQuery included (e.g. <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>)
 * somewhere in the head of your page, put <%= include_fancy_box %>
 * That's it!
 
