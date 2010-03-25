@@ -96,12 +96,10 @@ module FancyBox
   def fancy_box(options={}, &blk)
     options[:title_tag] ||= :h3
     options[:title_options] ||= {}
-    options[:style] << " display:none" unless options[:style].nil?
-    options[:style] = "display:none" if options[:style].nil?
     title = content_tag(options[:title_tag], options[:title], options[:title_options])
     content = options[:title].nil? ? "\n#{capture(&blk)}" : "\n#{title}\n#{capture(&blk)}"
     %w(title title_options title_tag).each { |opt| options.delete opt.to_sym }
-    concat(content_tag(:div, content, options))
+    concat(content_tag(:div, content_tag(:div, content, options), :style => "display:none"))
   end
   
   protected

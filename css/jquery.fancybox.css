@@ -110,6 +110,7 @@
 	right: -15px;
 	width: 30px;
 	height: 30px;
+	background-color:transparent;
 	background-image: url('/images/fancy_box/fancybox.png');
 	background-position: -40px 0px;
 	cursor: pointer;
