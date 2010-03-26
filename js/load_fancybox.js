@@ -4,7 +4,7 @@
 //  - .gallery a
 //  - a.fancy
 
-// OPTIONS : source (http://fancy.klade.lv/)
+// OPTIONS : source (http://fancybox.net/api)
 // hideOnContentClick : Hides FancyBox when cliked on zoomed item (false by default)
 // zoomSpeedIn : Speed in miliseconds of the zooming-in animation (no animation if 0)
 // zoomSpeedOut : Speed in miliseconds of the zooming-out animation (no animation if 0)

@@ -57,23 +57,30 @@ fancy_box method
 The fancy_box helper method simply generates an inline div that allows you to add a title as well. 
 
 EXAMPLE : 
-
+    
+     # Standard fancy box container
      fancy_box :title => "My Special Box" do
+       #This is my special box with content
+     end
+     
+     # Standard fancy box container with a link
+     fancy_box :title => "My Special Box", :link => "Open Special Box" do
        #This is my special box with content
      end
 
 OPTIONS :
 
     :title => "A title for your fancy_box"
-    :title_tag => The tag that will wrap the title, defaults to h3
-    :title_options => html options for your title_tag
-    :options => standard html options
+    :options => standard html options for the container
+    :link => "Name of link"
+    OR
+    :link => {:content => "Name of link", link_to_box_options}
 
 This plugin covers the 80% use case, that basically means that it will help you create fancy boxes using convention over configuration, if you need to configure fancy_box open up load_fancybox.js and add your own settings.
 
 Credits
 -------
 
-* based off of the fancy_box jquery plugin by : http://fancy.klade.lv/
+* based off of the fancy_box jquery plugin by : http://fancybox.net/
 
 Copyright (c) 2009 Vann Ek, released under the MIT license

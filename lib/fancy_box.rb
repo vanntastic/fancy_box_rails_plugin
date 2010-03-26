@@ -3,11 +3,12 @@ module FancyBox
   # includes all the files necessary to use fancy_box
   # just put <%= include_fancy_box %> in the head of your page
   def include_fancy_box(*args)
-    content = javascript_include_tag('jquery.fancy_box/jquery.fancybox-1.3.1.pack.js',
-                                     'jquery.fancy_box/jquery.easing-1.3.pack.js',
-                                     'jquery.fancy_box/load_fancybox',
-                                     'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 
-                                     :cache => "fancy_box")
+    content = 
+         javascript_include_tag('jquery.fancy_box/jquery.fancybox-1.3.1.pack.js',
+                                'jquery.fancy_box/jquery.easing-1.3.pack.js',
+                                'jquery.fancy_box/load_fancybox',
+                                'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 
+                                 :cache => "fancy_box")
     content << "\n#{stylesheet_link_tag('jquery.fancybox.css')}"                                
   end
   
@@ -23,15 +24,17 @@ module FancyBox
   #   link_to_box "Special Box", "#special", :box_class => "small"
   #       # => Opens #special with the class of 'small' assuming that you set it 
   #            up in load_fancybox.js
+  # 
+  
   def link_to_box(content, link, options={})
     box_class = options[:box_class].nil? ? "fancy" : options[:box_class]
+    elem_id = "fancylink-#{random_id}"
     options[:title] = content if options[:title] == :auto
     options[:class] << " #{box_class}" unless options[:class].nil?
     options[:class] = "#{box_class}" if options[:class].nil?
     options[:class] << " iframe" if determine_request(link) == :remote 
-    
-    options.delete :box_class
-    link_to content, link, options
+    options[:id] = elem_id
+    link_content = link_to content, link, options
   end
 
   # applies fancy box to an image link uses same options as link_to except first arg is image name
@@ -85,26 +88,58 @@ module FancyBox
   
   # creates an inline fancy_box with a title
   # EX: 
-  #   fancy_box :title => "My Fancy Box" do
-  #     <p>Content in my fancy box</p> 
-  #   end
+  #   Standard fancy box without link
+  #     fancy_box :title => "My Fancy Box", :id => "my-box" do
+  #       <p>Content in my fancy box</p> 
+  #     end
+  #   Fancy box with a link
+  #     fancy_box :title => "My Fancy Box", :id => "my-box",
+  #               :link => "My fancy box" do
+  #       <p>Content in my fancy box</p>
+  #     end
+  # OR
+  #   Fancy box with link and link options
+  #     fancy_box :title => "My Fancy Box", :id => "my-box",
+  #               :link => {:content => "My Fancy Box", 
+  #                         :options => {:id => "box-link"}
+  #                        } do
+  #       <p>Content in my fancy box</p>
+  #     end
+  
   # OPTIONS:
   #   :title = the title of for the fancy box
-  #   :title_tag = the tag for the title defaults to h3
-  #   :title_options = html options for the title tag
   #   any other standard html options...
+  #   :link => options for embedding a link or the content of the link
+  #       :content => "Content of your link",
+  #       :options => "html options for the anchor tag"
+  
   def fancy_box(options={}, &blk)
     options[:title_tag] ||= :h3
     options[:title_options] ||= {}
-    title = content_tag(options[:title_tag], options[:title], options[:title_options])
-    content = options[:title].nil? ? "\n#{capture(&blk)}" : "\n#{title}\n#{capture(&blk)}"
-    %w(title title_options title_tag).each { |opt| options.delete opt.to_sym }
-    concat(content_tag(:div, content_tag(:div, content, options), :style => "display:none"))
+    title_content = options[:title]
+    title = content_tag(options[:title_tag], title_content, 
+                        options[:title_options])
+    link = options[:link]
+    %w(title title_options title_tag link).each { |opt| options.delete opt.to_sym }
+    blk = content_tag(:div, content_tag(:div, capture(&blk), options), 
+                      :style => "display:none")
+    if link.nil?
+      return concat(blk)
+    else
+      if link.is_a?(String)
+        anchor = link_to_box(link, "##{options[:id]}", :title => title_content)
+      else
+        link[:options].update :title => title_content
+        anchor = link_to_box(link[:content], "##{options[:id]}", link[:options])
+      end
+      return concat("#{anchor}#{blk}")                           
+    end
+    
   end
   
   protected
-    def random_id(num_hash=9999)
-      rand(num_hash)
+    def random_id(num_hash=9999999)
+      rand(num_hash*9)
     end
     
     # determines the request 
