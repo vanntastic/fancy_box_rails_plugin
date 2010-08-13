@@ -9,7 +9,7 @@ module FancyBox
                                 'jquery.fancy_box/load_fancybox',
                                 'jquery.fancy_box/jquery.mousewheel-3.0.2.pack.js', 
                                  :cache => "fancy_box")
-    content << "\n#{stylesheet_link_tag('jquery.fancybox.css')}"                                
+    content << "\n#{stylesheet_link_tag('jquery.fancybox.css')}".html_safe
   end
   
   # the link method for fancy_box, has the same options as link_to and is fully equipped for ajax
@@ -124,7 +124,7 @@ module FancyBox
     blk = content_tag(:div, content_tag(:div, capture(&blk), options), 
                       :style => "display:none")
     if link.nil?
-      return concat(blk)
+      blk
     else
       if link.is_a?(String)
         anchor = link_to_box(link, "##{options[:id]}", :title => title_content)
@@ -132,9 +132,8 @@ module FancyBox
         link[:options].update :title => title_content
         anchor = link_to_box(link[:content], "##{options[:id]}", link[:options])
       end
-      return concat("#{anchor}#{blk}")                           
+      "#{anchor}#{blk}".html_safe
     end
-    
   end
   
   protected
