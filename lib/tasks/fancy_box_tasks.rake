@@ -36,7 +36,7 @@ namespace :fancy_box do
     
     desc 'Installs everything'
     task :all, 
-         :needs => ['fancy_box:install:css', 'fancy_box:install:js', 'fancy_box:install:images'] do
+         [:needs] => ['fancy_box:install:css', 'fancy_box:install:js', 'fancy_box:install:images'] do
       puts "Fancybox has been installed!"
       puts "--"
       puts "Just put <%= include_fancy_box %> in the head of your page"
