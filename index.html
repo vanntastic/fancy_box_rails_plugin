@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Fancy box rails plugin by vanntastic</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Fancy box rails plugin</h1>
+        <p>This is a rails plugin for the jquery fancy_box (http://fancy.klade.lv/) plugin</p>
+        <p class="view"><a href="https://github.com/vanntastic/fancy_box_rails_plugin">View the Project on GitHub <small>vanntastic/fancy_box_rails_plugin</small></a></p>
+        <ul>
+          <li><a href="https://github.com/vanntastic/fancy_box_rails_plugin/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/vanntastic/fancy_box_rails_plugin/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/vanntastic/fancy_box_rails_plugin">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>FancyBox</h2>
+
+<p>FancyBox is a rails plugin wrapper for a jquery plugin wit the same name. It's essentialy installs and gives you helper methods for using in your views. You can find the original documentation at : <a href="http://fancy.klade.lv/">http://fancy.klade.lv/</a>. Once you install you can also call it from jquery as well.</p>
+
+<h2>Installation</h2>
+
+<ul>
+<li>rails plugin install git://github.com/vanntastic/fancy_box_rails_plugin.git</li>
+<li>run rake fancy_box:install:all</li>
+<li>make sure you have jQuery included (e.g. )</li>
+<li>somewhere in the head of your page, put &lt;%= include_fancy_box %&gt;</li>
+<li>That's it!</li>
+</ul><h2>Usage</h2>
+
+<p>To use it for inline content or remote content do:</p>
+
+<pre><code>link_to_box "Some div", "#some-div"
+#OR
+link_to_box "google", "<a href="http://google.com">http://google.com</a>"
+#OR
+link_to_box "some page", "/some/page"
+#OR to override the default fancy_box class
+link_to_box "some box", "#some-box", :box_class =&gt; "small" 
+</code></pre>
+
+<p>NOTE : you can also do:</p>
+
+<pre><code>link_to "Some div", "#some-div", :class =&gt; "fancy"
+</code></pre>
+
+<p>To use it for images do:</p>
+
+<pre><code>link_to_image "special.jpg"
+#OR to add in a caption
+link_to_image "special.jpg", :title =&gt; "special image"
+#OR if you want a different thumbnail pic
+link_to_image "special-thumb.jpg:special-big.jpg"
+</code></pre>
+
+<p>To create an image gallery with fancy boxes do:</p>
+
+<pre><code>fancy_gallery [array of hashes]
+
+fancy_gallery {:thumb =&gt; "first-thumb.jpg", :main =&gt; "first.jpg", :title =&gt; "first pic"}
+  Hash options:
+    :thumb =&gt; "The thumbnail for the pic",
+    :main =&gt; "The main picture to open in the fancy box",
+    :title =&gt; "The title for your picture"
+</code></pre>
+
+<p>All the methods use standard link_to options, there are just there to save you some precious keystrokes.</p>
+
+<p>NOTE : if you use a base reset css stylesheet, it will not render the caption properly, this might be due to the fact that you have td styled with vertical-align: baseline, MAKE SURE that you find that somewhere in your stylesheet and remove it or comment it out.</p>
+
+<h2>fancy_box method</h2>
+
+<p>The fancy_box helper method simply generates an inline div that allows you to add a title as well. </p>
+
+<p>EXAMPLE : </p>
+
+<pre><code> # Standard fancy box container
+ fancy_box :title =&gt; "My Special Box" do
+   #This is my special box with content
+ end
+
+ # Standard fancy box container with a link
+ fancy_box :title =&gt; "My Special Box", :link =&gt; "Open Special Box" do
+   #This is my special box with content
+ end
+</code></pre>
+
+<p>OPTIONS :</p>
+
+<pre><code>:title =&gt; "A title for your fancy_box"
+:options =&gt; standard html options for the container
+:link =&gt; "Name of link"
+OR
+:link =&gt; {:content =&gt; "Name of link", link_to_box_options}
+</code></pre>
+
+<p>This plugin covers the 80% use case, that basically means that it will help you create fancy boxes using convention over configuration, if you need to configure fancy_box open up load_fancybox.js and add your own settings.</p>
+
+<h2>Credits</h2>
+
+<ul>
+<li>based off of the fancy_box jquery plugin by : <a href="http://fancybox.net/">http://fancybox.net/</a></li>
+</ul><p>Copyright (c) 2009 Vann Ek, released under the MIT license</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/vanntastic">vanntastic</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
